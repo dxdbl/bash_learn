@@ -11,15 +11,15 @@
 cpu_num=`cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l`
 echo "cpu num: "$cpu_num
 
-#内存（memory total），单位为 G
+#内存（memory total），单位为 GB
 memory_total_kb=`cat /proc/meminfo | grep "MemTotal" | awk {'print $2'} `
 memory_total_gb=`echo "sclae=2; $memory_total_kb/ 1024 / 1024" | bc`
 echo "memory total: "${memory_total_gb}G
 
-#memory free 单位为 G
+#memory free 单位为 MB
 memory_free_kb=`cat /proc/meminfo | grep "MemFree" | awk {'print $2'} `
-memory_free_gb=`echo "sclae=2; $memory_free_kb/ 1024 / 1024" | bc`
-echo "memory free: "${memory_free_gb}G
+memory_free_gb=`echo "sclae=2; $memory_free_kb / 1024" | bc`
+echo "memory free: "${memory_free_gb}M
 
 #disk_size
 disk_size=`df -h | sed -n 3p | awk '{print $1}'`
