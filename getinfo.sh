@@ -40,3 +40,4 @@ echo "software num: "$yum_installed_num
 #eth0的ip地址（ip）
 eth0_ip=`ifconfig eth0 | sed -n 2p | awk -F ":" '{print $2}' | awk '{print $1}'`
 echo "ip: "$eth0_ip
+
